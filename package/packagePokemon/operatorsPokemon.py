@@ -1,10 +1,15 @@
 import csv
+import json
 
 class operatorsPokemon:
     def extractPokemonCsv():
-        listPokemon = [];
+        routeCsv= ''
+        listPokemon = []
         tuplePokemon= ()
-        with open('D:\Pruebas\AutoLab\package\packagePokemon\pokemon.csv') as csvfile:
+        with open('appconfig.json') as config:
+            routeCsv = json.load(config)
+        
+        with open(routeCsv['routeCsv']) as csvfile:
             reader = csv.reader(csvfile)
             for row in reader:
                 tuplePokemon = tuple(row)

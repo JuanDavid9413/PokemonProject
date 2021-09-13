@@ -1,17 +1,18 @@
 from flask import Flask, jsonify, request
+import json
 from package.adminPackage import adminPackage
 
 
 app = Flask(__name__)
 
-@app.route('/getPokemon', methods=['GET'])
+@app.route('/Pokemon', methods=['GET'])
 def getPokemon():
-    # try:
+    try:
         field = request.args.get('field')
         value = request.args.get('value')
         return jsonify({'message': 'Ok', 'data': adminPackage.getPokemon(field, value), 'status': '200'})
-    # except:
-    #     return jsonify({'message': 'Internal Server Error', 'data': None, 'status': '500'})
+    except:
+        return jsonify({'message': 'Internal Server Error', 'data': None, 'status': '500'})
 
 @app.route('/createSchema', methods=['GET'])
 def createSchema():

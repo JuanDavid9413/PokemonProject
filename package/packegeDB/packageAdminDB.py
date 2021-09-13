@@ -1,5 +1,3 @@
-
-import os
 import sqlite3
 from sqlite3.dbapi2 import Cursor
 
@@ -21,7 +19,7 @@ class packageAdminDB:
     def getPokemonsData(fieldName = None, search = None):
         query = 'SELECT * FROM Pokemons'
         if fieldName != None and search != None:
-            query = 'SELECT * FROM Pokemons WHERE {0} LIKE "{1}"'.format(fieldName, search)
+            query = 'SELECT * FROM Pokemons WHERE {0} LIKE "%{1}%"'.format(fieldName, search)
 
         cursor.execute(query)
         return cursor.fetchall()
