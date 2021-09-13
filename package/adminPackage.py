@@ -2,22 +2,27 @@ from package.packagePokemon.operatorsPokemon import operatorsPokemon
 from package.packegeDB.packageAdminDB import packageAdminDB
 
 class adminPackage:
-    def getPokemon():
-        existTable = packageAdminDB.existTable()
-        if existTable == 1:
-            resultPokemon = adminPackage.validateInformationBD()
+    def getPokemon(field = None, value = None):
+        if packageAdminDB.existTable() == 1:
+            resultPokemon = packageAdminDB.getPokemonsData(field, value)
         else:
             packageAdminDB.createSchemma()
-            resultPokemon = adminPackage.validateInformationBD()
+            resultPokemon = adminPackage.InsertDataBD(field, value)
         
         return resultPokemon
-            
+    
 
-    def validateInformationBD():
-        pokemonData = packageAdminDB.getPokemonsData()
-        if len(pokemonData) == 0:
-            insertData = operatorsPokemon.extractPokemonCsv()
-            del insertData[0] 
-            return packageAdminDB.createInfoDB(insertData)
+    def CreateTables():
+        if packageAdminDB.existTable() != 1:
+            packageAdminDB.createSchemma()
+            return 'Los objetos de base de datos se crearon correctamente'
         else:
-            return pokemonData
+            return 'La tabla ya esta creada en la base de datos'
+    
+
+    def InsertDataBD():
+        insertData = operatorsPokemon.extractPokemonCsv()
+        del insertData[0]
+        return packageAdminDB.createInfoDB(insertData)
+
+        
