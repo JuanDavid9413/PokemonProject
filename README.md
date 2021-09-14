@@ -29,3 +29,9 @@
             http://localhost:4000/Pokemon?field=nombre&value=Bulbasaur
             http://localhost:4000/Pokemon?field=typeOne&value=Grass
             http://localhost:4000/Pokemon?field=legendary&value=True
+
+* the folder package admin all packages of project.
+    * PackagePokemon extract all information to csv document.
+    * PackegeDB admin all process the DB.
+* The test folder has test unit. Only function one of three. The process return random info. 
+* The DB created in SQLITE. It's name pokemonInfo.db

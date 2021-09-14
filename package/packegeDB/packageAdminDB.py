@@ -20,10 +20,8 @@ class packageAdminDB:
         query = 'SELECT * FROM Pokemons'
         if fieldName != None and search != None:
             query = 'SELECT * FROM Pokemons WHERE {0} LIKE "%{1}%"'.format(fieldName, search)
-
         cursor.execute(query)
         return cursor.fetchall()
-
 
     def createSchemma():
         cursor.execute('''
@@ -44,19 +42,8 @@ class packageAdminDB:
         )
         ''')
 
-        
-
     def createInfoDB(insertData):
         cursor.executemany('INSERT INTO Pokemons VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)',insertData)
-        cursor.execute('SELECT * FROM Pokemons')
         conn.commit()
+        cursor.execute('SELECT * FROM Pokemons')
         return cursor.fetchall()
-
-    def getInfoDB():
-        pass
-
-    def deleteInfoBD():
-        pass
-
-    def updateInfoBD():
-        pass

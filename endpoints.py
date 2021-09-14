@@ -9,7 +9,7 @@ app = Flask(__name__)
 def getPokemon():
     try:
         field = request.args.get('field')
-        value = request.args.get('value')
+        value = request.args.get('value')        
         return jsonify({'message': 'Ok', 'data': adminPackage.getPokemon(field, value), 'status': '200'})
     except:
         return jsonify({'message': 'Internal Server Error', 'data': None, 'status': '500'})
