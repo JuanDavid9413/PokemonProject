@@ -35,3 +35,5 @@
     * PackegeDB admin all process the DB.
 * The test folder has test unit. Only function one of three. The process return random info. 
 * The DB created in SQLITE. It's name pokemonInfo.db
+* Add swagger for see endpoints created 
+    * http://localhost:4000/swagger/#/default

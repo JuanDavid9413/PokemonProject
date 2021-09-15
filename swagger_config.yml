@@ -1,0 +1,7 @@
+consumes:
+- "application/json"
+produces:
+- "application/json"
+responses:
+  405:
+    description: "Invalid input"
